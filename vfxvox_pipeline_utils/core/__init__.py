@@ -9,7 +9,7 @@ from .exceptions import (
     ConfigurationError,
 )
 from .config import Config
-from .logging import setup_logging, get_logger
+from .logging import setup_logging, get_logger, reset_logging
 
 __all__ = [
     "BaseValidator",
@@ -23,4 +23,5 @@ __all__ = [
     "Config",
     "setup_logging",
     "get_logger",
+    "reset_logging",
 ]
