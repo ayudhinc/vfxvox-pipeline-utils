@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vfxvox-pipeline-utils"
+version = "0.1.0"
+description = "Open source toolkit for VFX production pipelines"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "VFXVox", email = "pipeline-utils@vfxvox.org"}
+]
+keywords = ["vfx", "pipeline", "validation", "usd", "sequence", "shotlint"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Multimedia :: Graphics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "click>=8.0",
+    "PyYAML>=6.0",
+    "Pillow>=9.0",
+]
+
+[project.optional-dependencies]
+usd = ["usd-core>=22.11"]
+oiio = ["OpenImageIO>=2.4"]
+all = ["usd-core>=22.11", "OpenImageIO>=2.4"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+]
+
+[project.scripts]
+vfxvox = "vfxvox_pipeline_utils.cli.main:cli"
+
+[project.urls]
+Homepage = "https://github.com/vfxvox/pipeline-utils"
+Documentation = "https://github.com/vfxvox/pipeline-utils/docs"
+Repository = "https://github.com/vfxvox/pipeline-utils"
+Issues = "https://github.com/vfxvox/pipeline-utils/issues"
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--cov=vfxvox_pipeline_utils",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
