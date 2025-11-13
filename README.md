@@ -10,7 +10,27 @@ Modern VFX pipelines involve complex workflows with multiple file formats, produ
 
 ## 🛠️ Planned Tools
 
-### 1. USD Asset Validator & Linter ✨
+### 1. ShotLint - Directory Structure Validator ⭐
+
+A rule-agnostic, config-driven validation framework for VFX shot and asset directory structures.
+
+**Features:**
+- Validates folder structure against configurable patterns
+- Enforces naming conventions with regex rules
+- Checks for missing frames in sequences
+- Verifies required files and folders exist
+- Declarative YAML-based rule definitions
+- Extensible plugin system for custom validators
+- Multiple output formats (console, JSON, Markdown)
+
+**Use Cases:**
+- Shot/asset folder structure enforcement
+- Delivery validation (ensure all required files present)
+- Pipeline compliance checking
+- Studio naming convention enforcement
+- Automated QC for directory organization
+
+### 2. USD Asset Validator & Linter ✨
 
 A comprehensive validation and linting tool for Universal Scene Description (USD) files.
 
@@ -28,7 +48,7 @@ A comprehensive validation and linting tool for Universal Scene Description (USD
 - Studio-wide USD standard enforcement
 - Performance optimization analysis
 
-### 2. Sequence Frame Validator ⭐
+### 3. Sequence Frame Validator ⭐
 
 A fast and reliable tool for validating image sequences before rendering or compositing.
 
@@ -47,7 +67,7 @@ A fast and reliable tool for validating image sequences before rendering or comp
 - Automated QC in pipeline hooks
 - Shot delivery validation
 
-### 3. Color Pipeline Utilities
+### 4. Color Pipeline Utilities
 
 A toolkit for managing OpenColorIO (OCIO) configurations and color workflows.
 
@@ -65,7 +85,7 @@ A toolkit for managing OpenColorIO (OCIO) configurations and color workflows.
 - LUT quality assurance
 - Studio color pipeline setup
 
-### 4. VFX Metadata Standardizer
+### 5. VFX Metadata Standardizer
 
 A tool for normalizing and enriching metadata across VFX file formats.
 
@@ -83,7 +103,7 @@ A tool for normalizing and enriching metadata across VFX file formats.
 - Production tracking integration
 - Delivery specification compliance
 
-### 5. Alembic Diff & Merge Tool
+### 6. Alembic Diff & Merge Tool
 
 A utility for comparing and analyzing Alembic cache files.
 
@@ -101,7 +121,7 @@ A utility for comparing and analyzing Alembic cache files.
 - Understanding what changed in updated assets
 - Merge conflict resolution for cache files
 
-### 6. Shotgrid/Ftrack Webhook Relay ⭐
+### 7. Shotgrid/Ftrack Webhook Relay ⭐
 
 A lightweight middleware service for production tracking automation.
 
@@ -136,6 +156,11 @@ pip install vfxvox-pipeline-utils[sequences] # Sequence validator only
 
 ### Quick Examples
 
+**Validate directory structure:**
+```bash
+vfxvox shotlint ./project --rules studio_structure.yaml
+```
+
 **Validate an image sequence:**
 ```bash
 vfxvox validate-sequence shot_010.%04d.exr
@@ -149,18 +174,25 @@ vfxvox lint-usd /path/to/asset.usd --config studio_rules.yaml
 **Python API usage:**
 ```python
 from vfxvox_pipeline_utils.sequences import SequenceValidator
+from vfxvox_pipeline_utils.shotlint import ShotLintValidator
 
+# Validate sequence
 validator = SequenceValidator()
 result = validator.validate("shot_010.%04d.exr")
 
 if result.has_errors():
     for issue in result.issues:
         print(f"{issue.severity}: {issue.message}")
+
+# Validate directory structure
+shotlint = ShotLintValidator()
+result = shotlint.validate("./project", rules_path="rules.yaml")
 ```
 
 ## 📦 Current Status
 
 **Phase 1 (In Development):**
+- ✅ ShotLint - Directory Structure Validator
 - ✅ Sequence Frame Validator
 - ✅ USD Asset Validator & Linter
 - 🚧 Core infrastructure and CLI
