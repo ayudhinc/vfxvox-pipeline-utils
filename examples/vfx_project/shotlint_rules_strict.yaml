@@ -1,0 +1,51 @@
+# Strict ShotLint Rules - Comprehensive validation
+
+rules:
+  # Shot structure
+  - name: "Shot folder structure"
+    type: "path_pattern"
+    pattern: "seq_{sequence}/shot_{shot}"
+    vars:
+      sequence: "\\d{3}"
+      shot: "\\d{3}"
+
+  # Comp versions
+  - name: "Comp version structure"
+    type: "path_pattern"
+    pattern: "seq_{sequence}/shot_{shot}/comp/v{version}"
+    vars:
+      sequence: "\\d{3}"
+      shot: "\\d{3}"
+      version: "\\d{3}"
+
+  # Required folders
+  - name: "Plate folders"
+    type: "must_exist"
+    glob: "seq_*/shot_*/plate"
+
+  - name: "Comp folders"
+    type: "must_exist"
+    glob: "seq_*/shot_*/comp"
+
+  - name: "Assets folders"
+    type: "must_exist"
+    glob: "seq_*/shot_*/assets"
+
+  # Frame sequences
+  - name: "Shot 010 comp v001 frames"
+    type: "frame_sequence"
+    folder: "seq_010/shot_010/comp/v001"
+    base: "shot_010_comp"
+    ext: ".exr"
+    start: 1001
+    end: 1100
+    padding: 4
+
+  # File naming
+  - name: "EXR naming"
+    type: "filename_regex"
+    regex: "^shot_\\d{3}_(comp|plate)\\.\\d{4}\\.exr$"
+
+  - name: "USD naming"
+    type: "filename_regex"
+    regex: "^[a-z_]+\\.usd$"

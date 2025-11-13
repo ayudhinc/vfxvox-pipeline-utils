@@ -1,0 +1,12 @@
+# Minimal ShotLint Rules - Quick validation
+
+rules:
+  # Basic structure check
+  - name: "Shot folders exist"
+    type: "must_exist"
+    glob: "seq_*/shot_*"
+
+  # Comp folders check
+  - name: "Comp folders exist"
+    type: "must_exist"
+    glob: "seq_*/shot_*/comp/*"

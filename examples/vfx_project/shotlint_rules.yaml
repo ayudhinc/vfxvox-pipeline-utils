@@ -1,0 +1,40 @@
+# ShotLint Rules for VFX Project Structure
+# This validates the standard VFX project organization
+
+rules:
+  # Validate sequence/shot folder structure
+  - name: "Shot folder structure"
+    type: "path_pattern"
+    pattern: "seq_{sequence}/shot_{shot}"
+    vars:
+      sequence: "\\d{3}"
+      shot: "\\d{3}"
+
+  # Validate comp version folders
+  - name: "Comp version structure"
+    type: "path_pattern"
+    pattern: "seq_{sequence}/shot_{shot}/comp/v{version}"
+    vars:
+      sequence: "\\d{3}"
+      shot: "\\d{3}"
+      version: "\\d{3}"
+
+  # Ensure plate folders exist
+  - name: "Plate folders present"
+    type: "must_exist"
+    glob: "seq_*/shot_*/plate"
+
+  # Ensure comp folders exist
+  - name: "Comp folders present"
+    type: "must_exist"
+    glob: "seq_*/shot_*/comp"
+
+  # Validate EXR naming convention
+  - name: "EXR naming convention"
+    type: "filename_regex"
+    regex: "^(shot_\\d{3}_(comp|plate))\\.(\\d{4}|\\d{4}-\\d{4})\\.exr$"
+
+  # Check for USD assets
+  - name: "USD assets present"
+    type: "must_exist"
+    glob: "assets/**/*.usd"
