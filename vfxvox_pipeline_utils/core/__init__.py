@@ -6,6 +6,7 @@ from .exceptions import (
     ValidationError,
     FileNotFoundError,
     InvalidFormatError,
+    ConfigurationError,
 )
 from .config import Config
 from .logging import setup_logging, get_logger
@@ -18,6 +19,7 @@ __all__ = [
     "ValidationError",
     "FileNotFoundError",
     "InvalidFormatError",
+    "ConfigurationError",
     "Config",
     "setup_logging",
     "get_logger",
