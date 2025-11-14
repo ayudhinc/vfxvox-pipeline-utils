@@ -55,7 +55,7 @@ Issues = "https://github.com/vfxvox/pipeline-utils/issues"
 [tool.black]
 line-length = 100
 target-version = ['py38', 'py39', 'py310', 'py311']
-include = '\.pyi?$'
+include = '\.pyi?$'$'
 extend-exclude = '''
 /(
   # directories
@@ -77,10 +77,52 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
     "--strict-markers",
+    "--strict-config",
     "--cov=vfxvox_pipeline_utils",
     "--cov-report=term-missing",
     "--cov-report=html",
+    "--cov-report=xml",
+    "--cov-branch",
+    "-v",
 ]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["vfxvox_pipeline_utils"]
+branch = true
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__pycache__/*",
+    "*/site-packages/*",
+]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "@abstractmethod",
+    "@abc.abstractmethod",
+]
+
+[tool.coverage.html]
+directory = "htmlcov"
 
 [tool.mypy]
 python_version = "3.8"
