@@ -1,0 +1,63 @@
+plugin_api:
+  version: "1.0.0"
+  storage_path: "~/.vfxvox/sessions"
+  
+  # DCC detection
+  auto_detect_dcc: true
+  
+  # Session management
+  session:
+    max_history: 100
+    auto_save: true
+    persist_results: true
+    
+  # Performance
+  performance:
+    background_validation: true
+    max_threads: 4
+    progress_update_interval: 0.5
+    
+  # UI
+  ui:
+    show_notifications: true
+    auto_highlight_issues: true
+    default_severity_filter: ["error", "warning"]
+    
+# DCC-specific settings
+dccs:
+  maya:
+    enabled: true
+    menu_location: "MayaWindow"
+    shelf_name: "VFXVox"
+    
+  houdini:
+    enabled: true
+    shelf_name: "vfxvox"
+    
+  nuke:
+    enabled: true
+    menu_location: "Nuke"
+    
+  blender:
+    enabled: true
+    addon_name: "vfxvox_validators"
+    
+# Validator profiles
+profiles:
+  modeling:
+    validators: ["geometry", "usd", "shotlint"]
+    
+  rigging:
+    validators: ["geometry", "shotlint"]
+    
+  animation:
+    validators: ["shotlint", "usd"]
+    
+  fx:
+    validators: ["geometry", "usd", "sequence"]
+    
+  lighting:
+    validators: ["usd", "render", "sequence"]
+    
+  compositing:
+    validators: ["sequence", "nuke_script"]

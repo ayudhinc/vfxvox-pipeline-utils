@@ -34,7 +34,31 @@ dependencies = [
 [project.optional-dependencies]
 usd = ["usd-core>=22.11"]
 oiio = ["OpenImageIO>=2.4"]
-all = ["usd-core>=22.11", "OpenImageIO>=2.4"]
+
+# DCC-specific plugin dependencies
+maya = [
+    "PySide2>=5.15; python_version<'3.11'",
+    "PySide6>=6.0; python_version>='3.11'",
+]
+houdini = []  # Houdini provides its own Python environment with hou module
+nuke = []  # Nuke provides its own Python environment with nuke module
+blender = []  # Blender provides its own Python environment with bpy module
+
+# Plugin API with all DCC support
+plugins = [
+    "PySide2>=5.15; python_version<'3.11'",
+    "PySide6>=6.0; python_version>='3.11'",
+]
+
+# All optional dependencies
+all = [
+    "usd-core>=22.11",
+    "OpenImageIO>=2.4",
+    "PySide2>=5.15; python_version<'3.11'",
+    "PySide6>=6.0; python_version>='3.11'",
+]
+
+# Development dependencies
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",

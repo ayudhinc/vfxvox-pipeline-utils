@@ -1,0 +1,102 @@
+# Validator Profiles
+# Define which validators are available for different roles and disciplines
+
+profiles:
+  # Modeling discipline
+  modeling:
+    name: "Modeling"
+    description: "Validators for modeling artists"
+    validators:
+      - geometry
+      - usd
+      - shotlint
+    default_parameters:
+      geometry:
+        check_topology: true
+        check_normals: true
+        check_uvs: true
+      
+  # Rigging discipline
+  rigging:
+    name: "Rigging"
+    description: "Validators for rigging artists"
+    validators:
+      - geometry
+      - shotlint
+    default_parameters:
+      geometry:
+        check_topology: true
+        check_normals: false
+        check_uvs: false
+      
+  # Animation discipline
+  animation:
+    name: "Animation"
+    description: "Validators for animation artists"
+    validators:
+      - shotlint
+      - usd
+    default_parameters:
+      shotlint:
+        check_frame_range: true
+        check_naming: true
+      
+  # FX discipline
+  fx:
+    name: "FX"
+    description: "Validators for FX artists"
+    validators:
+      - geometry
+      - usd
+      - sequence
+    default_parameters:
+      sequence:
+        check_frame_gaps: true
+        check_file_format: true
+      
+  # Lighting discipline
+  lighting:
+    name: "Lighting"
+    description: "Validators for lighting artists"
+    validators:
+      - usd
+      - render
+      - sequence
+    default_parameters:
+      usd:
+        check_materials: true
+        check_references: true
+      
+  # Compositing discipline
+  compositing:
+    name: "Compositing"
+    description: "Validators for compositing artists"
+    validators:
+      - sequence
+      - nuke_script
+    default_parameters:
+      sequence:
+        check_frame_gaps: true
+        check_file_format: true
+        check_resolution: true
+      
+  # Technical Director - all validators
+  td:
+    name: "Technical Director"
+    description: "All validators for TDs"
+    validators:
+      - geometry
+      - usd
+      - shotlint
+      - sequence
+      - render
+      - nuke_script
+    default_parameters: {}
+    
+  # Default profile - basic validators
+  default:
+    name: "Default"
+    description: "Basic validators for all users"
+    validators:
+      - shotlint
+    default_parameters: {}
