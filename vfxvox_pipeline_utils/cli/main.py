@@ -12,6 +12,12 @@ from vfxvox_pipeline_utils import __version__
 def cli(ctx, config, log_level):
     """VFXVox Pipeline Utilities - Tools for VFX production pipelines.
 
+    \b
+    ┌─────────────────────────────────────────┐
+    │  VFXVox Pipeline Utils                  │
+    │  VFX Validation Toolkit                 │
+    └─────────────────────────────────────────┘
+
     A collection of validation tools for VFX production pipelines:
 
     \b
