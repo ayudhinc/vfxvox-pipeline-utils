@@ -2,21 +2,17 @@
 
 import click
 from vfxvox_pipeline_utils import __version__
+from vfxvox_pipeline_utils.logo import get_logo
 
 
 @click.group()
 @click.version_option(version=__version__)
 @click.option("--config", type=click.Path(), help="Configuration file path")
 @click.option("--log-level", default="INFO", help="Logging level")
+@click.option("--no-logo", is_flag=True, help="Suppress logo display")
 @click.pass_context
-def cli(ctx, config, log_level):
+def cli(ctx, config, log_level, no_logo):
     """VFXVox Pipeline Utilities - Tools for VFX production pipelines.
-
-    \b
-    ┌─────────────────────────────────────────┐
-    │  VFXVox Pipeline Utils                  │
-    │  VFX Validation Toolkit                 │
-    └─────────────────────────────────────────┘
 
     A collection of validation tools for VFX production pipelines:
 
@@ -27,6 +23,10 @@ def cli(ctx, config, log_level):
 
     Use --help with any command for more information.
     """
+    # Display logo unless suppressed
+    if not no_logo and ctx.invoked_subcommand:
+        click.echo(get_logo( __version__))
+        click.echo()  # Add blank line after logo
     # Setup logging and configuration
     from vfxvox_pipeline_utils.core.logging import setup_logging
 
