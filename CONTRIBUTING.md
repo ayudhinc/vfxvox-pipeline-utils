@@ -12,8 +12,8 @@ We are committed to providing a welcoming and inclusive environment for all cont
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/vfxvox/pipeline-utils.git
-   cd pipeline-utils
+   git clone https://github.com/ayudhinc/vfxvox-pipeline-utils.git
+   cd vfxvox-pipeline-utils
    ```
 
 2. **Create a virtual environment:**

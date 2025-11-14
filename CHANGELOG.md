@@ -130,5 +130,5 @@ vfxvox lint-usd asset.usd --config custom_rules.yaml
 
 ---
 
-[0.1.0]: https://github.com/vfxvox/pipeline-utils/releases/tag/v0.1.0
-[Unreleased]: https://github.com/vfxvox/pipeline-utils/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/ayudhinc/vfxvox-pipeline-utils/releases/tag/v0.1.0
+[Unreleased]: https://github.com/ayudhinc/vfxvox-pipeline-utils/compare/v0.1.0...HEAD

@@ -15,7 +15,7 @@ setup(
     long_description_content_type="text/markdown",
     author="VFXVox",
     author_email="pipeline-utils@vfxvox.org",
-    url="https://github.com/vfxvox/pipeline-utils",
+    url="https://github.com/ayudhinc/vfxvox-pipeline-utils",
     license="MIT",
     packages=find_packages(exclude=["tests", "tests.*", "docs", "examples"]),
     python_requires=">=3.8",
@@ -55,8 +55,8 @@ setup(
     ],
     keywords="vfx pipeline validation usd sequence shotlint",
     project_urls={
-        "Bug Reports": "https://github.com/vfxvox/pipeline-utils/issues",
-        "Source": "https://github.com/vfxvox/pipeline-utils",
-        "Documentation": "https://github.com/vfxvox/pipeline-utils/docs",
+        "Bug Reports": "https://github.com/ayudhinc/vfxvox-pipeline-utils/issues",
+        "Source": "https://github.com/ayudhinc/vfxvox-pipeline-utils",
+        "Documentation": "https://github.com/ayudhinc/vfxvox-pipeline-utils/docs",
     },
 )

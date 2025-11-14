@@ -249,8 +249,8 @@ Built with support from the VFX open source community. Special thanks to:
 
 ## 📞 Contact
 
-- GitHub Issues: [Report bugs or request features](https://github.com/vfxvox/pipeline-utils/issues)
-- Discussions: [Join the conversation](https://github.com/vfxvox/pipeline-utils/discussions)
+- GitHub Issues: [Report bugs or request features](https://github.com/ayudhinc/vfxvox-pipeline-utils/issues)
+- Discussions: [Join the conversation](https://github.com/ayudhinc/vfxvox-pipeline-utils/discussions)
 - Email: pipeline-utils@vfxvox.org
 
 ---

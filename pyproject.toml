@@ -47,10 +47,10 @@ dev = [
 vfxvox = "vfxvox_pipeline_utils.cli.main:cli"
 
 [project.urls]
-Homepage = "https://github.com/vfxvox/pipeline-utils"
-Documentation = "https://github.com/vfxvox/pipeline-utils/docs"
-Repository = "https://github.com/vfxvox/pipeline-utils"
-Issues = "https://github.com/vfxvox/pipeline-utils/issues"
+Homepage = "https://github.com/ayudhinc/vfxvox-pipeline-utils"
+Documentation = "https://github.com/ayudhinc/vfxvox-pipeline-utils/docs"
+Repository = "https://github.com/ayudhinc/vfxvox-pipeline-utils"
+Issues = "https://github.com/ayudhinc/vfxvox-pipeline-utils/issues"
 
 [tool.black]
 line-length = 100
