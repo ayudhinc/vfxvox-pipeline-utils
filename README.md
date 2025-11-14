@@ -1,5 +1,16 @@
 # VFXVox Pipeline Utils
 
+```
+ ██╗   ██╗███████╗██╗  ██╗██╗   ██╗ ██████╗ ██╗  ██╗
+ ██║   ██║██╔════╝╚██╗██╔╝██║   ██║██╔═══██╗╚██╗██╔╝
+ ██║   ██║█████╗   ╚███╔╝ ██║   ██║██║   ██║ ╚███╔╝ 
+ ╚██╗ ██╔╝██╔══╝   ██╔██╗ ╚██╗ ██╔╝██║   ██║ ██╔██╗ 
+  ╚████╔╝ ██║     ██╔╝ ██╗ ╚████╔╝ ╚██████╔╝██╔╝ ██╗
+   ╚═══╝  ╚═╝     ╚═╝  ╚═╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═╝
+                                                       
+        Pipeline Utils - VFX Validation Toolkit       
+```
+
 > Open source toolkit for VFX production pipelines
 
 VFXVox Pipeline Utils is a collection of Python-based utilities designed to solve common pain points in VFX production workflows. Built by artists and TDs for the community, this toolkit provides essential validation, linting, and automation tools that integrate seamlessly into existing pipelines.
