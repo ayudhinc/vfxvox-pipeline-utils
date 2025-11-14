@@ -1,0 +1,120 @@
+# Studio-wide ShotLint Rules
+# This file defines validation rules for VFX project directory structures
+
+rules:
+  # Rule 1: Validate sequence/shot folder structure
+  - name: "Sequence and shot folder structure"
+    type: "path_pattern"
+    pattern: "seq_{sequence}/shot_{shot}"
+    vars:
+      sequence: "\\d{3}"  # 3-digit sequence number (e.g., 010, 020)
+      shot: "\\d{3}"      # 3-digit shot number (e.g., 010, 020)
+    level: "error"
+    message: "Project must follow seq_XXX/shot_XXX structure"
+
+  # Rule 2: Validate department folders exist
+  - name: "Required department folders"
+    type: "must_exist"
+    glob: "seq_*/shot_*/comp"
+    level: "error"
+    message: "Each shot must have a comp folder"
+
+  - name: "Required plate folders"
+    type: "must_exist"
+    glob: "seq_*/shot_*/plate"
+    level: "warning"
+    message: "Each shot should have a plate folder"
+
+  # Rule 3: Validate version folder structure
+  - name: "Version folder naming"
+    type: "path_pattern"
+    pattern: "seq_{sequence}/shot_{shot}/comp/v{version}"
+    vars:
+      sequence: "\\d{3}"
+      shot: "\\d{3}"
+      version: "\\d{3}"  # 3-digit version number (e.g., v001, v002)
+    level: "error"
+    message: "Comp versions must follow vXXX naming convention"
+
+  # Rule 4: Validate comp file naming
+  - name: "Comp file naming convention"
+    type: "filename_regex"
+    path: "seq_*/shot_*/comp/v*"
+    regex: "^[a-z]+_\\d{3}_\\d{3}_v\\d{3}_comp\\.(exr|dpx)$"
+    level: "error"
+    message: "Comp files must follow: project_seq_shot_version_comp.exr pattern"
+
+  # Rule 5: Validate plate file naming
+  - name: "Plate file naming convention"
+    type: "filename_regex"
+    path: "seq_*/shot_*/plate"
+    regex: "^[a-z]+_\\d{3}_\\d{3}_plate\\.\\d{4}\\.(exr|dpx)$"
+    level: "warning"
+    message: "Plate files should follow: project_seq_shot_plate.####.exr pattern"
+
+  # Rule 6: Check for complete frame sequences
+  - name: "Complete comp frame sequence"
+    type: "frame_sequence"
+    folder: "seq_{sequence}/shot_{shot}/comp/v{version}"
+    base: "{project}_{sequence}_{shot}_v{version}_comp"
+    ext: ".exr"
+    start: 1001
+    end: 1100
+    padding: 4
+    level: "error"
+    message: "Comp sequences must be complete from frame 1001 to 1100"
+
+  # Rule 7: Asset folder structure
+  - name: "Asset folder structure"
+    type: "path_pattern"
+    pattern: "assets/{asset_type}/{asset_name}"
+    vars:
+      asset_type: "(characters|environments|props)"
+      asset_name: "[a-z][a-z0-9_]+"
+    level: "error"
+    message: "Assets must be organized by type (characters/environments/props)"
+
+  # Rule 8: Required asset subfolders
+  - name: "Asset model folder"
+    type: "must_exist"
+    glob: "assets/*/*/model"
+    level: "error"
+    message: "Each asset must have a model folder"
+
+  - name: "Asset texture folder"
+    type: "must_exist"
+    glob: "assets/*/*/texture"
+    level: "warning"
+    message: "Each asset should have a texture folder"
+
+  # Rule 9: Validate USD file naming
+  - name: "USD file naming convention"
+    type: "filename_regex"
+    path: "assets/*/*/model"
+    regex: "^[a-z][a-z0-9_]+\\.(usd|usda|usdc)$"
+    level: "error"
+    message: "USD files must use lowercase with underscores"
+
+  # Rule 10: Check for required metadata files
+  - name: "Shot metadata file"
+    type: "must_exist"
+    glob: "seq_*/shot_*/shot_info.yaml"
+    level: "warning"
+    message: "Each shot should have a shot_info.yaml metadata file"
+
+  - name: "Asset metadata file"
+    type: "must_exist"
+    glob: "assets/*/*/asset_info.yaml"
+    level: "warning"
+    message: "Each asset should have an asset_info.yaml metadata file"
+
+# Optional: Custom plugin for advanced validation
+# - name: "Custom metadata validation"
+#   type: "plugin"
+#   module: "studio_validators:validate_shot_metadata"
+#   options:
+#     required_fields:
+#       - artist
+#       - date
+#       - frame_range
+#   level: "warning"
