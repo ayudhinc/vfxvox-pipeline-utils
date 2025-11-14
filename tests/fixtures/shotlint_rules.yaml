@@ -1,0 +1,39 @@
+# Sample ShotLint rules for testing
+
+rules:
+  # Basic path pattern rule
+  - name: "Sequence and shot structure"
+    type: "path_pattern"
+    pattern: "seq_{sequence}/shot_{shot}"
+    vars:
+      sequence: "\\d{3}"
+      shot: "\\d{3}"
+    level: "error"
+    message: "Must follow seq_XXX/shot_XXX structure"
+
+  # Filename regex rule
+  - name: "Comp file naming"
+    type: "filename_regex"
+    path: "seq_*/shot_*/comp"
+    regex: "^shot_\\d{3}_comp\\.\\d{4}\\.exr$"
+    level: "error"
+    message: "Comp files must match pattern: shot_XXX_comp.####.exr"
+
+  # Must exist rule
+  - name: "Comp folder exists"
+    type: "must_exist"
+    glob: "seq_*/shot_*/comp"
+    level: "error"
+    message: "Each shot must have a comp folder"
+
+  # Frame sequence rule
+  - name: "Complete frame sequence"
+    type: "frame_sequence"
+    folder: "seq_{sequence}/shot_{shot}/comp"
+    base: "shot_{shot}_comp"
+    ext: ".exr"
+    start: 1001
+    end: 1100
+    padding: 4
+    level: "error"
+    message: "Comp sequence must be complete"
