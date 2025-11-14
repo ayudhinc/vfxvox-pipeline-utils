@@ -9,7 +9,7 @@ LOGO_FULL = r"""
   ╚████╔╝ ██║     ██╔╝ ██╗ ╚████╔╝ ╚██████╔╝██╔╝ ██╗
    ╚═══╝  ╚═╝     ╚═╝  ╚═╝  ╚═══╝   ╚═════╝ ╚═╝  ╚═╝
                                                        
-        Pipeline Utils - VFX Validation Toolkit       
+Pipeline Utils v{version} - VFX Validation Toolkit       
 """
 
 # Compact logo for CLI
@@ -53,7 +53,7 @@ def get_logo(style: str = "full", version: str = "") -> str:
     elif style == "minimal":
         return LOGO_MINIMAL.format(version=version)
     else:
-        return LOGO_FULL
+        return LOGO_FULL.format(version=version)
 
 
 def print_logo(style: str = "full", version: str = "") -> None:

@@ -1,8 +1,15 @@
 """Main CLI entry point for VFXVox Pipeline Utils."""
 
+import sys
 import click
 from vfxvox_pipeline_utils import __version__
 from vfxvox_pipeline_utils.logo import get_logo
+
+
+# Display logo at module load time if not suppressed
+if "--no-logo" not in sys.argv and "--version" not in sys.argv:
+    click.echo(get_logo("full", __version__))
+    click.echo()
 
 
 @click.group()
@@ -23,10 +30,6 @@ def cli(ctx, config, log_level, no_logo):
 
     Use --help with any command for more information.
     """
-    # Display logo unless suppressed
-    if not no_logo and ctx.invoked_subcommand:
-        click.echo(get_logo( __version__))
-        click.echo()  # Add blank line after logo
     # Setup logging and configuration
     from vfxvox_pipeline_utils.core.logging import setup_logging
 
