@@ -5,34 +5,64 @@ This package provides a plugin system that enables VFXVox validators to work
 seamlessly across different Digital Content Creation (DCC) applications.
 """
 
-from vfxvox_pipeline_utils.plugins.core.plugin_manager import PluginManager
-from vfxvox_pipeline_utils.plugins.core.validator_interface import (
-    ValidatorPlugin,
-    ValidatorMetadata,
-    ValidatorParameter,
-)
 from vfxvox_pipeline_utils.plugins.core.context import (
     ValidationContext,
     SceneElement,
     SceneInfo,
     ValidationScope,
+    IssueSeverity,
+)
+from vfxvox_pipeline_utils.plugins.core.validator_interface import (
+    ValidatorPlugin,
+    ValidatorMetadata,
+    ValidatorParameter,
+    ValidationResult,
+    ValidationIssue,
+    ValidationSummary,
+    FixResult,
+    UIConfig,
 )
 from vfxvox_pipeline_utils.plugins.core.session_manager import (
     SessionManager,
     ValidationSession,
+    SessionFilters,
+)
+from vfxvox_pipeline_utils.plugins.core.exceptions import (
+    PluginError,
+    AdapterError,
+    ValidatorError,
+    SessionError,
+    ConfigurationError,
+    RegistrationError,
 )
 
 __version__ = "1.0.0"
 
 __all__ = [
-    "PluginManager",
-    "ValidatorPlugin",
-    "ValidatorMetadata",
-    "ValidatorParameter",
+    # Context
     "ValidationContext",
     "SceneElement",
     "SceneInfo",
     "ValidationScope",
+    "IssueSeverity",
+    # Validator Interface
+    "ValidatorPlugin",
+    "ValidatorMetadata",
+    "ValidatorParameter",
+    "ValidationResult",
+    "ValidationIssue",
+    "ValidationSummary",
+    "FixResult",
+    "UIConfig",
+    # Session Management
     "SessionManager",
     "ValidationSession",
+    "SessionFilters",
+    # Exceptions
+    "PluginError",
+    "AdapterError",
+    "ValidatorError",
+    "SessionError",
+    "ConfigurationError",
+    "RegistrationError",
 ]

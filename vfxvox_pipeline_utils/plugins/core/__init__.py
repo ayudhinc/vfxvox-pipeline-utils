@@ -6,12 +6,6 @@ including the plugin manager, validator interface, context abstraction,
 and session management.
 """
 
-from vfxvox_pipeline_utils.plugins.core.plugin_manager import PluginManager
-from vfxvox_pipeline_utils.plugins.core.validator_interface import (
-    ValidatorPlugin,
-    ValidatorMetadata,
-    ValidatorParameter,
-)
 from vfxvox_pipeline_utils.plugins.core.context import (
     ValidationContext,
     SceneElement,
@@ -19,25 +13,55 @@ from vfxvox_pipeline_utils.plugins.core.context import (
     ValidationScope,
     IssueSeverity,
 )
+from vfxvox_pipeline_utils.plugins.core.validator_interface import (
+    ValidatorPlugin,
+    ValidatorMetadata,
+    ValidatorParameter,
+    ValidationResult,
+    ValidationIssue,
+    ValidationSummary,
+    FixResult,
+    UIConfig,
+)
 from vfxvox_pipeline_utils.plugins.core.session_manager import (
     SessionManager,
     ValidationSession,
     SessionFilters,
 )
-from vfxvox_pipeline_utils.plugins.core.result_aggregator import ResultAggregator
+from vfxvox_pipeline_utils.plugins.core.exceptions import (
+    PluginError,
+    AdapterError,
+    ValidatorError,
+    SessionError,
+    ConfigurationError,
+    RegistrationError,
+)
 
 __all__ = [
-    "PluginManager",
-    "ValidatorPlugin",
-    "ValidatorMetadata",
-    "ValidatorParameter",
+    # Context
     "ValidationContext",
     "SceneElement",
     "SceneInfo",
     "ValidationScope",
     "IssueSeverity",
+    # Validator Interface
+    "ValidatorPlugin",
+    "ValidatorMetadata",
+    "ValidatorParameter",
+    "ValidationResult",
+    "ValidationIssue",
+    "ValidationSummary",
+    "FixResult",
+    "UIConfig",
+    # Session Management
     "SessionManager",
     "ValidationSession",
     "SessionFilters",
-    "ResultAggregator",
+    # Exceptions
+    "PluginError",
+    "AdapterError",
+    "ValidatorError",
+    "SessionError",
+    "ConfigurationError",
+    "RegistrationError",
 ]
