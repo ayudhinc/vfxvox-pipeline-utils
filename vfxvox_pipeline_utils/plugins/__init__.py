@@ -5,6 +5,11 @@ This package provides a plugin system that enables VFXVox validators to work
 seamlessly across different Digital Content Creation (DCC) applications.
 """
 
+from vfxvox_pipeline_utils.plugins.core.plugin_manager import (
+    PluginManager,
+    get_plugin_manager,
+    reset_plugin_manager,
+)
 from vfxvox_pipeline_utils.plugins.core.context import (
     ValidationContext,
     SceneElement,
@@ -42,6 +47,10 @@ from vfxvox_pipeline_utils.plugins.core.exceptions import (
 __version__ = "1.0.0"
 
 __all__ = [
+    # Plugin Manager
+    "PluginManager",
+    "get_plugin_manager",
+    "reset_plugin_manager",
     # Context
     "ValidationContext",
     "SceneElement",

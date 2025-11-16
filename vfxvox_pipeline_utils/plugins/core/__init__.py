@@ -13,6 +13,11 @@ from vfxvox_pipeline_utils.plugins.core.context import (
     ValidationScope,
     IssueSeverity,
 )
+from vfxvox_pipeline_utils.plugins.core.plugin_manager import (
+    PluginManager,
+    get_plugin_manager,
+    reset_plugin_manager,
+)
 from vfxvox_pipeline_utils.plugins.core.validator_interface import (
     ValidatorPlugin,
     ValidatorMetadata,
@@ -41,6 +46,10 @@ from vfxvox_pipeline_utils.plugins.core.exceptions import (
 )
 
 __all__ = [
+    # Plugin Manager
+    "PluginManager",
+    "get_plugin_manager",
+    "reset_plugin_manager",
     # Context
     "ValidationContext",
     "SceneElement",
