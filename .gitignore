@@ -124,6 +124,16 @@ dmypy.json
 *.swp
 *.swo
 *~
+.vs/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+*.iml
+.fleet/
+.kiro/
+.code-workspace
 
 # OS
 .DS_Store
